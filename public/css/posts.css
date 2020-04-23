@@ -1,0 +1,11 @@
+.post-header-content {
+  display: grid;
+  grid-template-columns: [start] 50% [middle] 50% [end];
+}
+
+.button-container {
+  align-self: end;
+  justify-self: end;
+  padding-right: 5px;
+  padding-bottom: 5px;
+}
