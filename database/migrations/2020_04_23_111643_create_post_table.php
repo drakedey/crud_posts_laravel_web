@@ -19,6 +19,8 @@ class CreatePostTable extends Migration
             $table->string('name')->nullable(false);
             $table->double('value', 8, 2)->nullable(false);
             $table->string('description');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
