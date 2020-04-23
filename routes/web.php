@@ -22,7 +22,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('posts')->group(function() {
-    Route::get('/', 'PostController@index')->name('products');
     Route::get('/{id}/detail', 'PostController@detail')->name('product detail');
 });
+
+Route::prefix('profile')->group(function() {
+    Route::get('/posts', 'PostController@index')->name('posts'); 
+}) ;
 

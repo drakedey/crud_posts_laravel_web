@@ -38,7 +38,13 @@
                         </tbody>
                     </table>
                 @else
-                    <h3>No hay posts</h3>
+                <div class="jumbotron">
+                    <h1 class="display-4">You have no posts</h1>
+                    <p class="lead">You dont have created any post, but you can create one right now.</p>
+                    <p class="lead">
+                      <a class="btn btn-success btn-lg" href="#" role="button">Create Post</a>
+                    </p>
+                  </div>
                 @endif
 
             </div>

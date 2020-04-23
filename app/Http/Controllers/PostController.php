@@ -18,15 +18,15 @@ class PostController extends Controller
 
     public function index() {
         $user = Auth::user();
-        return view('products.index', ['user' => $user]);
+        return view('post.index');
     }
 
     public function createPost() {
-        return view('products.create');
+        return view('post.create');
     }
 
     public function detail($id) {
         $post = Post::query()->findOrFail($id);
-        return view('products.detail', ['post' => $post]);
+        return view('post.detail', ['post' => $post]);
     }
 }
