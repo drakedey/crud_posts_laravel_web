@@ -43,11 +43,11 @@ class PostController extends Controller
 
         $dataValidator = Validator::make($data, $rules);
         if($dataValidator->fails()) {
-            return redirect()->route('post.get.create', ['createdSucess' => false]);
+            return redirect()->route('post.get.create', ['createdSucess' => 'false']);
         } else {
             $data['user_id'] = Auth::user()->id;
             $post = Post::create($data);
-            return redirect()->route('posts', ['createdSucess' => true]);
+            return redirect()->route('posts', ['createdSucess' => 'true']);
         }
     }
 }

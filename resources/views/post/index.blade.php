@@ -16,7 +16,7 @@
         <div class="row justify-content-center">
             <div class="col-12">
                 @if (count(Auth::user()->posts) > 0)
-                    <table class="table">
+                    <table id="table" class="table">
                         <head>
                             <tr>
                                 <th scope="col">Title</th>
