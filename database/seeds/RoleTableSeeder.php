@@ -13,17 +13,16 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
         Rol::query()->truncate();
 
-        DB::table('roles')->insert([
+        DB::table('role')->insert([
             'name' => 'ADMIN',
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
-        DB::table('roles')->insert([
+        DB::table('role')->insert([
             'name' => 'USER',
             'created_at' => now(),
             'updated_at' => now()
