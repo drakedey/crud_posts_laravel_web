@@ -5,10 +5,12 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Te7aHoudini\LaravelTrix\Traits\HasTrixRichText;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasTrixRichText;
 
     /**
      * The attributes that are mass assignable.

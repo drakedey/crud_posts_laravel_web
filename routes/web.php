@@ -22,7 +22,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('posts')->group(function() {
-    Route::get('/{id}/detail', 'PostController@detail')->name('product detail');
+    Route::get('/{id}/detail', 'PostController@detail')->name('post.detail');
+    Route::get('/create', 'PostController@createPost')->name('post.get.create');
+    Route::post('/create', 'PostController@storePost')->name('post.post.create');
 });
 
 Route::prefix('profile')->group(function() {

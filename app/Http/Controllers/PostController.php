@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use App\Post;
 
 
@@ -28,5 +29,25 @@ class PostController extends Controller
     public function detail($id) {
         $post = Post::query()->findOrFail($id);
         return view('post.detail', ['post' => $post]);
+    }
+
+    public function storePost(Request $request) {
+        $rules = [
+            'content' => 'required|max:400',
+            'name' => 'required|max:40'
+        ];
+        $data = [
+            'content' => $request->input('post-trixFields')['content'],
+            'name' => $request->input('title')
+        ];
+
+        $dataValidator = Validator::make($data, $rules);
+        if($dataValidator->fails()) {
+            return redirect()->route('post.get.create', ['createdSucess' => false]);
+        } else {
+            $data['user_id'] = Auth::user()->id;
+            $post = Post::create($data);
+            return redirect()->route('posts', ['createdSucess' => true]);
+        }
     }
 }
