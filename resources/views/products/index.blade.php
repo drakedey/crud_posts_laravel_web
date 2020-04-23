@@ -26,14 +26,14 @@
                         <tbody>
                             @foreach (Auth::user()->posts as $post)
                                 <tr>
-                                    <td>{{ $post->name }}</td>
-                                    <td>${{ $post->value }}</td>
-                                    <td>{{ $post->created_at }}</td>
+                                        <td>{{ $post->name }}</td>
+                                        <td>${{ $post->value }}</td>
+                                        <td>{{ $post->created_at }}</td>
+                                    
                                     <td>
-                                        <button type="button" class="btn btn-primary">Edit</button>
+                                        <a class="btn btn-primary" href={{ 'posts/'.$post->id .'/detail' }}>Edit</a>
                                         <button type="button" class="btn btn-danger">Delete</button>
                                     </td>
-                                </tr>
                             @endforeach
                         </tbody>
                     </table>

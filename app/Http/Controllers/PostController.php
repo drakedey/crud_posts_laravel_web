@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use App\Post;
 
 
 use Illuminate\Http\Request;
@@ -22,5 +23,10 @@ class PostController extends Controller
 
     public function createPost() {
         return view('products.create');
+    }
+
+    public function detail($id) {
+        $post = Post::query()->findOrFail($id);
+        return view('products.detail', ['post' => $post]);
     }
 }

@@ -21,4 +21,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/products', 'PostController@index')->name('products');
+Route::prefix('posts')->group(function() {
+    Route::get('/', 'PostController@index')->name('products');
+    Route::get('/{id}/detail', 'PostController@detail')->name('product detail');
+});
+
