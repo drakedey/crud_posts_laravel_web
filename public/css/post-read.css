@@ -14,3 +14,62 @@
   grid-row: body / end_row;
   grid-column: margin / end_margin;
 }
+
+.button_comment_container {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+
+#cancel-button {
+  margin-right: 15px;
+  display: none;
+  color: white;
+}
+
+.no_comments {
+  padding-bottom: 20px;
+}
+
+.commentary_list {
+  padding-bottom: 40px;
+  padding-top: 30px;
+}
+
+.comment {
+  display: grid;
+  grid-template-columns: [start_column] 50% [middle_column] 50% [end_column];
+  grid-template-rows: [start_row] 30% [middle_row] 40% [options_row] 10% [end_row];
+  padding-bottom: 20px;
+}
+
+.header_comment {
+  grid-column: start_column / middle_column;
+  grid-row: start_row / middle_row;
+}
+
+.comment_date {
+  grid-column: middle_column / end_column;
+  grid-row: start_row / middle_row;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.comment_body {
+  grid-column: start_column / end_column;
+  grid-row: middle_row / options_row;
+}
+
+.options {
+  grid-row: options_row / end_row;
+  grid-column: middle_column / end_column;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.options > button {
+  font-size: 14px;
+  padding-left: 15px;
+  color: rgba(0,0,0,.5) !important;
+}
+

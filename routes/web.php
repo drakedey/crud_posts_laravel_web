@@ -29,6 +29,11 @@ Route::prefix('posts')->group(function() {
     Route::put('/edit/{id}', 'PostController@storeEditedPost')->name('post.put.edit');
     Route::delete('/delete', 'PostController@softDelete')->name('post.softdelete');
     Route::get('/read/{id}', 'PostController@read')->name('post.read');
+    Route::put('/{id}/comment', 'CommentController@putComment')->name('comment.put');
+});
+
+Route::prefix('comments')->group(function () {
+    Route::delete('/delete', 'CommentController@deleteComment')->name('comment.delete');
 });
 
 Route::prefix('profile')->group(function() {

@@ -8,6 +8,10 @@
     </div>
     <div class="text_section">
       {!! $post->content !!}
+      @php
+          $comments = $post->comments;
+      @endphp
+      @include('post.comments')
     </div>
   </div>
 @endsection
