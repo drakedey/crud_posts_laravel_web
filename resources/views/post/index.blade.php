@@ -32,7 +32,7 @@
                                         <td>{{ $post->created_at }}</td>
                                         <td>{{ $post->updated_at }}</td>
                                     <td>
-                                        <a class="btn btn-primary" href={{ 'posts/'.$post->id .'/detail' }}>Edit</a>
+                                        <a class="btn btn-primary" href={{ '/posts/create/'.$post->id }}>Edit</a>
                                         <button type="button" class="btn btn-danger">Delete</button>
                                     </td>
                             @endforeach

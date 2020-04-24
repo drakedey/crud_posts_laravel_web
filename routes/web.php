@@ -23,8 +23,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('posts')->group(function() {
     Route::get('/{id}/detail', 'PostController@detail')->name('post.detail');
+    Route::get('/create/{id}', 'PostController@editPost')->name('post.get.edit');
     Route::get('/create', 'PostController@createPost')->name('post.get.create');
     Route::post('/create', 'PostController@storePost')->name('post.post.create');
+    Route::put('/edit/{id}', 'PostController@storeEditedPost')->name('post.put.edit');
 });
 
 Route::prefix('profile')->group(function() {
