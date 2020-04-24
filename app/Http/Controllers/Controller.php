@@ -10,4 +10,8 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function sendAlertMessage($context, $message) {
+        return ['showAlert' => 'true', 'context' => $context, 'message' => $message];
+    }
 }

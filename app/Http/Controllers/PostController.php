@@ -45,19 +45,19 @@ class PostController extends Controller
 
         $dataValidator = Validator::make($data, $rules);
         if($dataValidator->fails()) {
-            return redirect()->route('post.get.edit', ['createdSuccess' => 'false', 'alertMessage' => 'Post edited failed!', 'id' => $post->id]);
+            return redirect()->route('post.get.edit', array_merge($this->sendAlertMessage('danger', 'Post edited error!'), ['id' => $post->id]));
         }
 
         $post->content = $data['content'];
         $post->name = $data['name'];
 
         if(!$post->isDirty()) {
-            return redirect()->route('post.get.edit', ['createdSuccess' => 'false', 'alertMessage' => 'Post edited failed!', 'id' => $post->id]);
+            return redirect()->route('post.get.edit', array_merge($this->sendAlertMessage('danger', 'Post edited error!'), ['id' => $post->id]));
         }
 
         $post->save();
 
-        return redirect()->route('posts', ['createdSuccess' => 'true', 'alertMessage' => 'Post edited succesfully!']);
+        return redirect()->route('posts', $this->sendAlertMessage('success', 'Post edited succesfully!'));
     }
 
     public function detail($id) {
@@ -77,19 +77,19 @@ class PostController extends Controller
 
         $dataValidator = Validator::make($data, $rules);
         if($dataValidator->fails()) {
-            return redirect()->route('post.get.create', ['createdSuccess' => 'false', 'alertMessage' => 'Post created failed!']);
+            return redirect()->route('post.get.create', $this->sendAlertMessage('danger', 'Post created failed!'));
         } else {
             $data['user_id'] = Auth::user()->id;
             $post = Post::create($data);
-            return redirect()->route('posts', ['createdSuccess' => 'true', 'alertMessage' => 'Post created succesfully!']);
+            return redirect()->route('posts', $this->sendAlertMessage('success', 'Post created successfully!'));
         }
     }
 
     public function softDelete(Request $request) {
         $post = Post::destroy($request->input('id'));
         if($post) {
-            return redirect()->route('posts', ['showAlert' => 'true', 'context' => 'success', 'message' => 'Post deleted succesfully']);
+            return redirect()->route('posts', $this->sendAlertMessage('success', 'Post deleted successfully'));
         }
-        return redirect()->route('posts', ['showAlert' => 'true', 'context' => 'danger', 'message' => 'Post deleted error']);
+        return redirect()->route('posts', $this->sendAlertMessage('danger', 'Post deleted error'));
     }
 }
