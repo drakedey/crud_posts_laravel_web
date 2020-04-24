@@ -84,4 +84,12 @@ class PostController extends Controller
             return redirect()->route('posts', ['createdSuccess' => 'true', 'alertMessage' => 'Post created succesfully!']);
         }
     }
+
+    public function softDelete(Request $request) {
+        $post = Post::destroy($request->input('id'));
+        if($post) {
+            return redirect()->route('posts', ['showAlert' => 'true', 'context' => 'success', 'message' => 'Post deleted succesfully']);
+        }
+        return redirect()->route('posts', ['showAlert' => 'true', 'context' => 'danger', 'message' => 'Post deleted error']);
+    }
 }

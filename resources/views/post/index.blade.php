@@ -4,6 +4,7 @@
 @section('content')
     <div class="container">
         @include('post.alert')
+        @include('post.delete_modal')
        
         <div class="post-header-content">
             <div class="col-6">
@@ -33,7 +34,7 @@
                                         <td>{{ $post->updated_at }}</td>
                                     <td>
                                         <a class="btn btn-primary" href={{ '/posts/create/'.$post->id }}>Edit</a>
-                                        <button type="button" class="btn btn-danger">Delete</button>
+                                        <button type="button" class="btn btn-danger" onclick="performDeleteClick({{$post->id}})">Delete</button>
                                     </td>
                             @endforeach
                         </tbody>

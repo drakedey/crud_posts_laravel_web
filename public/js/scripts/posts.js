@@ -5,5 +5,4 @@ if(hiddenContent) {
   const element = document.querySelector('trix-editor');
   console.log(hiddenContent.textContent);
   element.editor.insertHTML(hiddenContent.textContent);
-
 }
