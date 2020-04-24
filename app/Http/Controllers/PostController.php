@@ -33,7 +33,7 @@ class PostController extends Controller
     public function storeEditedPost(Request $request, $id) {
         $post = Post::query()->findOrFail($id);
         $rules = [
-            'content' => 'required|max:400',
+            'content' => 'required',
             'name' => 'required|max:40'
         ];
 
@@ -66,7 +66,7 @@ class PostController extends Controller
 
     public function storePost(Request $request) {
         $rules = [
-            'content' => 'required|max:400',
+            'content' => 'required',
             'name' => 'required|max:40'
         ];
         $data = [

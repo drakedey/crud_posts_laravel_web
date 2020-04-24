@@ -1,7 +1,7 @@
 .main_container {
   display: grid;
-  grid-template-columns: [start_column] 30% [margin] 50% [end_margin] auto [end_column] ;
-  grid-template-rows: [start_row] 10% [header] 20% [body] auto [end_row];
+  grid-template-columns: [start_column] 20% [margin] 50% [end_margin] auto [end_column] ;
+  grid-template-rows: [start_row] 5% [header] 10% [body] auto [end_row];
   min-height: 100vh;
 }
 
