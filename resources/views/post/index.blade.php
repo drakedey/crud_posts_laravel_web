@@ -34,6 +34,7 @@
                                         <td>{{ $post->updated_at }}</td>
                                     <td>
                                         <a class="btn btn-primary" href={{ '/posts/create/'.$post->id }}>Edit</a>
+                                        <a class="btn btn-secondary" href={{ '/posts/read/'.$post->id }} >View</a>
                                         <button type="button" class="btn btn-danger" onclick="performDeleteClick({{$post->id}})">Delete</button>
                                     </td>
                             @endforeach

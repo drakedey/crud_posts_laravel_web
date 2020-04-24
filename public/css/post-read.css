@@ -1,0 +1,16 @@
+.main_container {
+  display: grid;
+  grid-template-columns: [start_column] 30% [margin] 50% [end_margin] auto [end_column] ;
+  grid-template-rows: [start_row] 10% [header] 20% [body] auto [end_row];
+  min-height: 100vh;
+}
+
+.title_section {
+  grid-row: header / body;
+  grid-column: margin / end_column;
+}
+
+.text_section {
+  grid-row: body / end_row;
+  grid-column: margin / end_margin;
+}

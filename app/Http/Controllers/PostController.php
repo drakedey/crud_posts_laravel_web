@@ -18,7 +18,6 @@ class PostController extends Controller
 
 
     public function index() {
-        $user = Auth::user();
         return view('post.index');
     }
 
@@ -91,5 +90,12 @@ class PostController extends Controller
             return redirect()->route('posts', $this->sendAlertMessage('success', 'Post deleted successfully'));
         }
         return redirect()->route('posts', $this->sendAlertMessage('danger', 'Post deleted error'));
+    }
+
+    public function read($id) {
+        $post = Post::query()->findOrFail($id);
+        if(!$post)
+            return redirect()->route('posts', $this->sendAlertMessage('danger', 'Post not found!'));
+        return view('post.read', ['post' => $post]);
     }
 }

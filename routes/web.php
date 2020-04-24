@@ -28,6 +28,7 @@ Route::prefix('posts')->group(function() {
     Route::post('/create', 'PostController@storePost')->name('post.post.create');
     Route::put('/edit/{id}', 'PostController@storeEditedPost')->name('post.put.edit');
     Route::delete('/delete', 'PostController@softDelete')->name('post.softdelete');
+    Route::get('/read/{id}', 'PostController@read')->name('post.read');
 });
 
 Route::prefix('profile')->group(function() {
