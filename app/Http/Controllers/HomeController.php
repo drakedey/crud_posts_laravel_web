@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use App\Post;
+
 
 class HomeController extends Controller
 {
@@ -12,7 +16,8 @@ class HomeController extends Controller
      * @return void
      */
     public function __construct()
-    {
+    {       
+
         $this->middleware('auth');
     }
 
@@ -23,6 +28,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $lastPosts = Post::query()
+                     ->latest()
+                     ->limit(10)
+                     ->get();
+        return view('home', ['lastPosts' => $lastPosts]);
     }
 }

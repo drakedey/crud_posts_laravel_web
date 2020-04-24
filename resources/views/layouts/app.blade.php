@@ -90,6 +90,7 @@
     <script src="{{ asset('js/scripts/delete_posts.js') }}" defer></script>
     <script src="{{ asset('js/scripts/crud_comment.js') }}" defer></script>
     <script src="{{ asset('js/scripts/main.js') }}" defer></script>
+    <script src="{{ asset('js/scripts/home.js') }}" defer></script>
 
 </body>
 </html>

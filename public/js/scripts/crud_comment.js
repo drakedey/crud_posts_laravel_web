@@ -22,5 +22,4 @@ const handleCancelClick = (e) => {
   cancelEditButton.style.display = 'none';
   editCommentInput.value = '';
   editCommentIdInput.value = '';
-
 }
