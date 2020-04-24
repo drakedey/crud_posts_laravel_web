@@ -13,6 +13,11 @@
 .text_section {
   grid-row: body / end_row;
   grid-column: margin / end_margin;
+  margin-top: 25px;
+}
+
+.comments_section {
+  margin-top: 25px;
 }
 
 .button_comment_container {

@@ -14,7 +14,7 @@
       </div>
     {{Form::close()}}
   </div>
-  @if (!empty($comments))
+  @if (count($comments) > 0)
   @include('post.delete_comment_modal')
   <h4>Comentaries</h4>
   <div class="commentary_list">
@@ -25,10 +25,12 @@
           </span>
           <div class="comment_date"> {{ $comment->created_at }} </div>
           <p class = "comment_body"> {{ $comment->body }} </p>
+          @if($comment->user->id == Auth::user()->id)
           <div class="options">
             <button type="button" onclick="handleEditComment({{ $comment }})" class="btn btn-link">Edit</button>
             <button type="button"  onclick="handleDeleteComment({{ $comment->id }})" class="btn btn-link">Delete</button>
           </div>
+          @endif
         </div>
     @endforeach
     

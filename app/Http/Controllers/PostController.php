@@ -27,6 +27,8 @@ class PostController extends Controller
 
     public function editPost($id) {
         $post = Post::query()->findOrFail($id);
+        if(!$this->postBelongToUser($post))
+            return redirect()->route('posts', $this->sendAlertMessage('danger', 'You\'re not the owner of this post!'));
         return view('post.create', ['editMode' => true, 'post' => $post]);
     }
 
@@ -37,10 +39,15 @@ class PostController extends Controller
             'name' => 'required|max:40'
         ];
 
+        if(!$this->postBelongToUser($post))
+            return redirect()->route('posts', $this->sendAlertMessage('danger', 'You\'re not the owner of this post!'));
+        
         $data = [
             'content' => $request->input('post-trixFields')['content'],
             'name' => $request->input('title')
         ];
+
+    
 
         $dataValidator = Validator::make($data, $rules);
         if($dataValidator->fails()) {
@@ -89,6 +96,9 @@ class PostController extends Controller
         if($post) {
             return redirect()->route('posts', $this->sendAlertMessage('success', 'Post deleted successfully'));
         }
+        if(!$this->postBelongToUser($post))
+            return redirect()->route('posts', $this->sendAlertMessage('danger', 'You\'re not the owner of this post!'));
+
         return redirect()->route('posts', $this->sendAlertMessage('danger', 'Post deleted error'));
     }
 
@@ -97,5 +107,9 @@ class PostController extends Controller
         if(!$post)
             return redirect()->route('posts', $this->sendAlertMessage('danger', 'Post not found!'));
         return view('post.read', ['post' => $post]);
+    }
+
+    private function postBelongToUser($post) {
+        return $post->user->id == Auth::user()->id;
     }
 }
