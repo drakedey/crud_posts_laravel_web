@@ -14,8 +14,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="title">Title</label>
-                        {{ Form::text('title', $post->name, ['class' => 'form-control', 'required' => true]) }}
-                        {{-- <input required type="text"  name="title" class="form-control" id="title" aria-describedby="title" placeholder="Enter a title to the post" value={{ $editMode == true ? $post->name : '' }}> --}}
+                        {{ Form::text('title', !empty($post) ? $post->name: '', ['class' => 'form-control', 'required' => true, 'placeholder' => 'Set a title for yout post!']) }}
                     </div>
                     <div class="form-group">
                         @trix(\App\Post::class, 'content', ['hideToolbar' => true, 'value' => 'algun contenido'])

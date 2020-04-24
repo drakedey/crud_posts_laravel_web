@@ -45,19 +45,19 @@ class PostController extends Controller
 
         $dataValidator = Validator::make($data, $rules);
         if($dataValidator->fails()) {
-            return redirect()->route('/posts/create/'.$post->id, ['createdSuccess' => 'false']);
+            return redirect()->route('post.get.edit', ['createdSuccess' => 'false', 'alertMessage' => 'Post edited failed!', 'id' => $post->id]);
         }
 
         $post->content = $data['content'];
         $post->name = $data['name'];
 
         if(!$post->isDirty()) {
-            return redirect()->route('/posts/create/'.$post->id, ['createdSuccess' => 'false']);
+            return redirect()->route('post.get.edit', ['createdSuccess' => 'false', 'alertMessage' => 'Post edited failed!', 'id' => $post->id]);
         }
 
         $post->save();
 
-        return redirect()->route('posts', ['createdSuccess' => 'true']);
+        return redirect()->route('posts', ['createdSuccess' => 'true', 'alertMessage' => 'Post edited succesfully!']);
     }
 
     public function detail($id) {
@@ -77,11 +77,11 @@ class PostController extends Controller
 
         $dataValidator = Validator::make($data, $rules);
         if($dataValidator->fails()) {
-            return redirect()->route('post.get.create', ['createdSucess' => 'false']);
+            return redirect()->route('post.get.create', ['createdSuccess' => 'false', 'alertMessage' => 'Post created failed!']);
         } else {
             $data['user_id'] = Auth::user()->id;
             $post = Post::create($data);
-            return redirect()->route('posts', ['createdSucess' => 'true']);
+            return redirect()->route('posts', ['createdSuccess' => 'true', 'alertMessage' => 'Post created succesfully!']);
         }
     }
 }
